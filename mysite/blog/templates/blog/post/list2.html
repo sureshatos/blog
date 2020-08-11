@@ -1,0 +1,87 @@
+
+{% extends "base.html" %}
+
+{% block list2 %}
+
+{% for post in page_obj %}
+<h2>
+    <a href="{{ post.get_absolute_url }}">
+        {{ post.title|upper }}
+    </a>
+</h2>
+<p class="date">
+    Published {{ post.publish }} by {{ post.author }}
+</p>
+{{ post.body|truncatewords:50|linebreaks }}
+{% endfor %}
+
+<hr>
+count: ={{paginator.count}}<br>
+paginator.num_pages = {{paginator.num_pages}}<br>
+paginator.page_range={{paginator.page_range}}<br>
+paginator.page(2)={{paginator.page_range}}<br>
+other: {{posts.has_other_pages}}
+<hr>
+
+
+{% if is_paginated %}
+<nav>
+    <ul class="pagination pg-blue">
+        {% if page_obj.has_previous %}
+        <li class="page-item">
+            <a href="?page={{ 1 }}" class="page-link" aria-label="Previous">
+                <span aria-hidden="false">First</span>
+                <span class="sr-only">Previous</span>
+        
+            </a>
+        </li>
+        <li class="page-item">
+            <a  href="?page={{ page_obj.previous_page_number }}" class="page-link" aria-label="Previous">
+                <span aria-hidden="true">Previous</span>
+                <span class="sr-only">Previous</span>
+                
+            </a>
+        </li>
+        
+        {% endif %}
+
+{% for i in paginator.page_range %}
+{% if page_obj.number == i %}
+
+<li class="page-item active"><a class="page-link">{{ i }}</a></li>
+{% else %}
+<li class="page-item"><a href="?page={{ i }}" class="page-link">{{ i }}</a></li>
+{% endif %}
+{% endfor %}
+
+{% if page_obj.has_next %}
+        <li class="page-item">
+            <a href="?page={{ page_obj.next_page_number }}" class="page-link" aria-label="Next">
+                <span aria-hidden="true">Next</span>
+                <span class="sr-only">Next</span>
+            </a>
+        </li>
+        <li class="page-item">
+            <a href="?page={{ 4 }}"  class="page-link" aria-label="Last">
+                <span>Last</span>
+            </a>
+        </li>
+        {% endif %}
+    </ul>
+</nav>
+{% endif %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}
