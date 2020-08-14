@@ -1,8 +1,7 @@
 # blog project
-# 
-
 
 steps:
-1 Create a virtual environment and Activate
-2.pip install -r  requirements.txt
-3.py manage.py runserver
+
+# Create a virtual environment and Activate
+# pip install -r  requirements.txt
+# py manage.py runserver
