@@ -2,6 +2,6 @@
 
 steps:
 
-# Create a virtual environment and Activate
+# Create  virtual environment and Activate
 # pip install -r  requirements.txt
 # py manage.py runserver
